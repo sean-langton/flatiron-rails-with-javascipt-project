@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_02_26_065100) do
 
-  create_table "captains", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "password_digest"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "fleets", force: :cascade do |t|
     t.string "name"
     t.integer "league_id"
@@ -43,6 +34,15 @@ ActiveRecord::Schema.define(version: 2019_02_26_065100) do
     t.string "type"
     t.integer "max_cargo"
     t.integer "max_distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+    t.string "password_digest"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
