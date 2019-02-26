@@ -1,6 +1,18 @@
+<% if @user.errors.any? %>
+  <%= pluralize(@user.errors.count, "error") %> prevent this post from being saved:
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+<br>
 <%= form_for @user do |f| %>
-Name: <%= f.text_field :username %><br>
-Email: <%= f.text_field :email %><br>
-Password: <%= f.password_field :password %><br>
+<%= f.label "Username:" %><br>
+<%= f.text_field :username %><br>
+<%= f.label "Email Address:" %><br>
+<%= f.text_field :email %><br>
+<%= f.label "Password:" %><br>
+<%= f.password_field :password %><br>
 <%= f.submit %>
 <% end %>
