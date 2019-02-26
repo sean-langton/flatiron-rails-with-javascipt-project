@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  has_secure_password
   before_action :set_user, only: [:show]
 
   def show
