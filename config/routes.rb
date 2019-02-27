@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   delete 'sessions/destroy', to: 'sessions#destroy'
   resources :users, only: [:show, :new, :create]
   post 'users/new', to:"users#create"
-  resources :leagues, only: [:show, :new, :create, :destroy, :index]
+  resources :leagues, only: [:show, :new, :create, :destroy, :index] do
+    resources :fleets, only: [:show, :index, :new]
+  end
+
   post 'leagues/new', to:"leagues#create"
   resources :fleets, only: [:show, :new, :create, :destroy, :index, :edit]
   post 'fleets/new', to:"fleets#create"
