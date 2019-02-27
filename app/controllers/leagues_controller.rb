@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
   include ApplicationHelper
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: [:new, :create, :show, :destroy]
 
   def index
     @leagues = League.all
@@ -17,7 +17,6 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     @league.admin_id = @user.id
-    binding.pry
       if @league.save
         flash[:notice] = "League Created "
         redirect_to league_path(@league)
@@ -27,6 +26,15 @@ class LeaguesController < ApplicationController
   end
 
   def destroy
+    @league = League.find(params[:id])
+    binding.pry
+    if @league.admin_id == @user.id
+      @league.destroy
+      flash[:notice] = "League Deleted"
+    else
+      flash[:notice] = "Error Deleting League, Please Contact Admin"
+    end
+      redirect_to leagues_path
   end
 
   private

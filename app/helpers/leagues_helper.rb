@@ -4,8 +4,8 @@ module LeaguesHelper
     User.find(league.admin_id)
   end
 
-  def is_admin?
-    session[:id] == league.admin_id
+  def is_admin?(league)
+    @user.id == league.admin_id
   end
 
 end

@@ -1,3 +1,6 @@
 <%= flash[:notice] if flash[:notice] %>
 <br>
-<%= @league.name %>
+<%= @league.name %><br>
+<% if is_admin?(@league) %>
+<%= link_to 'Delete League', league_path, method: "delete" %>
+<% end %>

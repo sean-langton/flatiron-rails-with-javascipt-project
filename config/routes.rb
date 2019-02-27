@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete 'sessions/destroy', to: 'sessions#destroy'
   resources :users, only: [:show, :new, :create]
   post 'users/new', to:"users#create"
-  resources :leagues, only: [:show, :new, :create]
+  resources :leagues, only: [:show, :new, :create, :destroy, :index]
   post 'leagues/new', to:"leagues#create"
-  get 'leagues', to:"leagues#index"
+#  delete 'league/:id/destroy', to: 'leagues#destroy', prefix: 'league_destroy'
 end
