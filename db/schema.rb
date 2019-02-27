@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_02_26_065100) do
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.integer "num_of_fleets"
+    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

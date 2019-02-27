@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <%= pluralize(@user.errors.count, "error") %> prevent this post from being saved:
+  <%= pluralize(@user.errors.count, "error") %> prevent this user from being created:
   <ul>
   <% @user.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>

@@ -1,10 +1,13 @@
 class LeaguesController < ApplicationController
+  include ApplicationHelper
+  before_action :set_user, only: [:new, :create]
+
   def index
     @leagues = League.all
   end
 
   def show
-    @league = params[:id]
+    @league = League.find(params[:id])
   end
 
   def new
@@ -13,6 +16,8 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.new(league_params)
+    @league.admin_id = @user.id
+    binding.pry
       if @league.save
         flash[:notice] = "League Created "
         redirect_to league_path(@league)
