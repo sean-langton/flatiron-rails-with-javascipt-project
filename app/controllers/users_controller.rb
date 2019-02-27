@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
 
   def show
   end
@@ -23,11 +22,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :password_digest, :email)
-  end
-
-  def set_user
-    @user = User.find_by(id: session[:user_id])
-    redirect_to '/' if @user.nil?
   end
 
 end

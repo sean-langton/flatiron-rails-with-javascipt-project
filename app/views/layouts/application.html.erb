@@ -20,8 +20,16 @@
             Fantasy Sports...But With Boats
           </div>
         </div>
-        <div class="navbar" id="logged-out">
-          <a href="<% root_url %>"> Home </a>
+        <% if logged_in %>
+          <div class="navbar" id="logged-in">
+            <%= link_to 'Home', root_url %>
+            <%= link_to 'Log Out', sessions_destroy_path, method: "delete" %>
+        <% else %>
+          <div class="navbar" id="logged-out">
+            <%= link_to 'Home', root_url %>
+            <%= link_to 'Log In', login_path %>
+            <%= link_to 'Sign Up', new_user_path %>
+        <% end %>
         </div>
       </div>
     </header>
