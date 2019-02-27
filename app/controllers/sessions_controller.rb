@@ -17,8 +17,8 @@ class SessionsController < ApplicationController
       u.username = auth['info']['name']
       u.email = auth['info']['email']
       u.image = auth['info']['image']
+      u.password = "facebook_#{SecureRandom.hex}"
     end
-    binding.pry
     if @user
       success
     else
@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
   end
 
   def success
+    binding.pry
     session[:user_id] = @user.id
     redirect_to user_path(@user), notice: "Welcome back to Fantasy Fleets!"
   end
