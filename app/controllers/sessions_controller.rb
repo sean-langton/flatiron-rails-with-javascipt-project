@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: params[:user][:username])
+    @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "Welcome back to Fantasy Fleets!"
     else
-      redirect_to signin_path, notice: "Error finding user, please confirm username and password and try again"
+      redirect_to login_path, notice: "Error finding user, please confirm username and password and try again"
     end
   end
 
