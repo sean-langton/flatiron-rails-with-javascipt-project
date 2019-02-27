@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   post 'users/new', to:"users#create"
   resources :leagues, only: [:show, :new, :create, :destroy, :index]
   post 'leagues/new', to:"leagues#create"
-#  delete 'league/:id/destroy', to: 'leagues#destroy', prefix: 'league_destroy'
+  resources :fleets, only: [:show, :new, :create, :destroy, :index, :edit]
+  post 'fleets/new', to:"fleets#create"
+
 end

@@ -24,6 +24,9 @@
           <div class="navbar" id="logged-in">
             <%= link_to 'Home', root_url %>
             <%= link_to 'Log Out', sessions_destroy_path, method: "delete" %>
+            <%= link_to "View Leagues", leagues_path %>
+            <%= link_to "New League", new_league_path %>
+            <%= link_to "New Fleet", new_fleet_path %>
         <% else %>
           <div class="navbar" id="logged-out">
             <%= link_to 'Home', root_url %>

@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 2019_02_26_065100) do
   create_table "fleets", force: :cascade do |t|
     t.string "name"
     t.integer "league_id"
-    t.integer "captain_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["captain_id"], name: "index_fleets_on_captain_id"
     t.index ["league_id"], name: "index_fleets_on_league_id"
+    t.index ["user_id"], name: "index_fleets_on_user_id"
   end
 
   create_table "leagues", force: :cascade do |t|

@@ -3,7 +3,7 @@ class CreateFleets < ActiveRecord::Migration[5.2]
     create_table :fleets do |t|
       t.string :name
       t.references :league
-      t.references :captain
+      t.references :user
 
       t.timestamps
     end
