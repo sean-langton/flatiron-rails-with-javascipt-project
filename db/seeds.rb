@@ -36,8 +36,8 @@ ship_list = [
 ]
 
 voyage_list = [
-  ["New York", "London", 1000, 500, 1, 1],
-  ["Los Angeles", "Tokyo", 1000, 500, 2, 1]
+  ["New York", "London", 200, 100, 1, 1],
+  ["Los Angeles", "Tokyo", 200, 100, 2, 1]
 ]
 
 user_list.each do |username, password, email|

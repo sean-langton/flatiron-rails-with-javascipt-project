@@ -8,6 +8,11 @@ class ShipsController < ApplicationController
   end
 
   def show
+    if @fleet
+      @voyages = Voyage.all.where("fleet_id = ? AND ship_id = ?", @fleet.id, @ship.id).where.not(dep_port: [nil, ""])
+    else
+      @voyages = Voyage.all.where(ship_id: @ship).where.not(dep_port: [nil, ""])
+    end
   end
 
   def update

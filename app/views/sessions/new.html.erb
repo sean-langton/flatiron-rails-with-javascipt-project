@@ -1,6 +1,6 @@
 <%= flash[:notice] if flash[:notice] %>
 <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
-<%= f.label :name, "Name:" %>
+<%= f.label :name, "Username:" %>
 <%= f.text_field :username %><br>
 <%= f.label :password, "Password:" %>
 <%= f.password_field :password%><br>
