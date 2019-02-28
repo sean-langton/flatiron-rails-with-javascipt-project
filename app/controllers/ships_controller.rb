@@ -1,8 +1,8 @@
 class ShipsController < ApplicationController
   include ApplicationHelper, ShipsHelper
   before_action :set_user, only: [:new, :create, :show, :destroy, :update]
-  before_action :set_fleet, only: [:show, :index, :update]
-  before_action :set_ship, only: [:show, :update]
+  before_action :set_fleet, only: [:show, :index, :update, :destroy]
+  before_action :set_ship, only: [:show, :update, :destroy]
   def index
     @ships = Ship.all
   end
@@ -45,8 +45,10 @@ class ShipsController < ApplicationController
   end
 
   def destroy
+
     if edit_permission_check
       @fleet.ships.delete(@ship)
+      flash[:notice] = "Ships #{@ship.name} has been removed."
       redirect_to fleet_path(@fleet)
     else
       flash[:notice] = "Ships can only be removed by it's Fleet's Captain."

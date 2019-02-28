@@ -15,7 +15,7 @@
     <tr>
       <td> <%= index+1 %>. </td>
       <td> <%= link_to f.name, fleet_path(f) %> </td>
-      <td> <%= f.league.name %> </td>
+      <td> <%= link_to f.league.name, league_path(f.league) %> </td>
     </tr>
   <% end %>
 </table>
