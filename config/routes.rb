@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'ships/index'
-  get 'ships/show'
-  get 'ships/edit'
-  get 'ships/update'
-  get 'ships/new'
-  get 'ships/create'
   root 'static#index'
   get '/login', to:'sessions#new'
   get '/auth/facebook/callback', to:'sessions#fbcreate'
@@ -18,9 +12,13 @@ Rails.application.routes.draw do
 
   post 'leagues/new', to:"leagues#create"
   resources :fleets, only: [:show, :new, :create, :destroy, :edit, :update] do
-    resources :ships, only: [:show, :index, :new, :update, :destroy]
-    post 'fleets/new', to:"fleets#create"
+    resources :ships, only: [:show, :index, :new, :update, :destroy] do
+      resources :voyages, only: [:new, :create]
+    end
   end
 
   resources :ships, only: [:show, :new, :create, :index]
+
+  resources :voyages, only: [:new, :create]
+  
 end
