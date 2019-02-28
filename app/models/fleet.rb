@@ -12,4 +12,8 @@ class Fleet < ApplicationRecord
     self.league.ships
   end
 
+  def points
+    self.ships.sum {|ship| ship.points(self)}
+  end
+
 end
