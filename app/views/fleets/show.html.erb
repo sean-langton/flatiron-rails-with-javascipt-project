@@ -16,7 +16,7 @@
   <tr>
     <td> <%= s %> </td>
     <td>  <% if @owner %>
-            <%= link_to ship.name , fleet_ship_path(ship) if ship %>
+            <%= link_to ship.name , fleet_ship_path(@fleet, ship) if ship %>
           <% else %>
             <%= ship.name if ship %>
           <% end %>
