@@ -4,6 +4,9 @@ class Fleet < ApplicationRecord
   has_many :voyages
   has_many :ships, through: :voyages
 
+  validates :name, presence: true
+  validates :league_id, :user_id, numericality: true
+  
   def league_ships
     self.league.ships
   end

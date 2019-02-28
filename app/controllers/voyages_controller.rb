@@ -1,8 +1,8 @@
 class VoyagesController < ApplicationController
   include ApplicationHelper, ShipsHelper, VoyagesHelper
   before_action :set_user, only: [:new, :create]
-  before_action :set_fleet, only: [:new, :create]
-  before_action :voyage_set_ship, only: [:new, :create]
+  before_action :set_fleet, only: [:new]
+  before_action :voyage_set_ship, only: [:new]
 
   def new
     @voyage = Voyage.new(ship_id: params[:ship_id], fleet_id: params[:fleet_id])
@@ -10,11 +10,12 @@ class VoyagesController < ApplicationController
 
   def create
     @voyage = Voyage.new(voyage_params)
-    binding.pry
       if @voyage.save
         flash[:notice] = "Voyage Created"
         redirect_to fleet_path(@voyage.fleet)
       else
+        @ship = @voyage.ship
+        @fleet = @voyage.fleet
         render :new
       end
   end

@@ -1,8 +1,13 @@
 class Ship < ApplicationRecord
-  has_many :voyages
-  has_many :fleets, through: :voyages
 
   @@sizes = ["Handy Size", "Handymax", "Panamax", "Neopanamax", "Capesize", "Chinamax"]
+  
+  has_many :voyages
+  has_many :fleets, through: :voyages
+  validates :name, presence: true
+  validates :size, inclusion: { in: @@sizes}
+  validates :max_cargo, :max_distance, numericality: true
+
 
   def self.sizes
     @@sizes
