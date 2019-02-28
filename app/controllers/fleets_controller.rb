@@ -11,10 +11,9 @@ class FleetsController < ApplicationController
   end
 
   def new
-    if params[:league_id] && !League.exists?(params[:league_id])
+    if !params[:league_id] || !League.exists?(params[:league_id])
       redirect_to leagues_path
     else
-      binding.pry
       @fleet = Fleet.new(league_id: params[:league_id])
     end
   end

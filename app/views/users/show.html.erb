@@ -2,4 +2,17 @@
 <br>
 Captain <%= @user.username %>
 <br>
-PLACEHOLDER FOR TEAM TABLE
+<table>
+  </tr>
+    <th> </th>
+    <th> Fleet Name </th>
+    <th> League Name</th>
+  </tr>
+  <% @fleets.each_with_index do |f, index| %>
+    <tr>
+      <td> <%= index+1 %>. </td>
+      <td> <%= link_to f.name, fleet_path(f) %> </td>
+      <td> <%= f.league.name %> </td>
+    </tr>
+  <% end %>
+</table>
