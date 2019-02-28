@@ -1,6 +1,6 @@
 class Ship < ApplicationRecord
-  has_many :fleet_ship
-  has_many :fleets, through: :fleet_ship
+  has_many :voyages
+  has_many :fleets, through: :voyages
 
   @@sizes = ["Handy Size", "Handymax", "Panamax", "Neopanamax", "Capesize", "Chinamax"]
 

@@ -5,8 +5,8 @@ class CreateVoyages < ActiveRecord::Migration[5.2]
       t.string :arr_port
       t.integer :distance
       t.integer :cargo
+      t.references :fleet
       t.references :ship
-      t.references :captain
 
       t.timestamps
     end
