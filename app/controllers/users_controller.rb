@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+  before_action :set_user, only: [:show]
 
   def show
-    @user = User.find(params[:id])
-    @fleets = @user.fleets
+    @index = User.find(params[:id])
+    @fleets = @index.fleets
+    @owner = "True" if @index == @user
   end
 
   def new

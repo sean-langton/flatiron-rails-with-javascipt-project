@@ -1,10 +1,11 @@
 class FleetsController < ApplicationController
-  include ApplicationHelper
-  before_action :set_user, only: [:new, :create, :show, :destroy]
+  include ApplicationHelper, FleetsHelper
+  before_action :set_user, only: [:new, :create, :show, :destroy, :edit]
+  before_action :set_fleet, only: [:show, :edit, :update]
 
   def show
-    @fleet = Fleet.find(params[:id])
     @ships = @fleet.ships
+    @owner = "True" if @fleet.user == @user
   end
 
   def new
@@ -30,11 +31,13 @@ class FleetsController < ApplicationController
   end
 
   def edit
-    @fleet = Fleet.find(params[:id])
+    if @fleet.user != @user
+      flash[:notice] = "Access Denied. Unable To Edit Fleets That Belong To Other Users"
+      redirect_to user_path(@user)
+    end
   end
 
   def update
-    @fleet = Fleet.find(params[:id])
     @fleet.update(fleet_params)
     redirect_to fleet_path(@fleet)
   end

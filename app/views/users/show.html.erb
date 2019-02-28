@@ -1,6 +1,10 @@
 <%= flash[:notice] if flash[:notice] %>
 <br>
-Captain <%= @user.username %>
+<% if @owner %>
+  <h3> Your Fleet </h3>
+<% else %>
+<h3> Captain <%= @index.username %>'s Fleet </h3>
+<% end %>
 <br>
 <table>
   </tr>

@@ -1,5 +1,5 @@
 <h2> <%= @fleet.name %> </h2>
-<%= link_to "Edit Fleet", edit_fleet_path(@fleet) %>    <%= link_to "Add Ships", fleet_ships_path(@fleet) %>
+<%= link_to "Edit Fleet", edit_fleet_path(@fleet) if @owner %>    <%= link_to "Add Ships", fleet_ships_path(@fleet) if @owner %>
 <br>
 <table>
   </tr>
@@ -12,9 +12,14 @@
   <% ship = @ships.find_by(size: s) if @ships %>
   <tr>
     <td> <%= s %> </td>
-    <td> <%= link_to ship.name , fleet_ship_path(ship) if ship %> </td>
-    <td> <%= link_to "Release" , fleet_ship_path(ship), method:"delete" if ship %> </td>
-    <td> <%= link_to "Voyage", new_fleet_ship_voyage_path(@fleet, ship) if ship %> </td>
+    <td>  <% if @owner %>
+            <%= link_to ship.name , fleet_ship_path(ship) if ship %>
+          <% else %>
+            <%= ship.name %>
+          <% end %>
+          </td>
+    <td> <%= link_to "Release" , fleet_ship_path(ship), method:"delete" if ship && @owner %> </td>
+    <td> <%= link_to "Voyage", new_fleet_ship_voyage_path(@fleet, ship) if ship && @owner %> </td>
   </tr>
   <% end %>
 </table>
