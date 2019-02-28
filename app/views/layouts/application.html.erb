@@ -27,6 +27,7 @@
             <%= link_to 'My Profile', user_path(current_user) %>
             <%= link_to "View Leagues", leagues_path %>
             <%= link_to "New League", new_league_path %>
+            <%= link_to "New Ship", new_ship_path %>
         <% else %>
           <div class="navbar" id="logged-out">
             <%= link_to 'Home', root_url %>

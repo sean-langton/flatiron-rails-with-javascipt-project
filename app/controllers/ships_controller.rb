@@ -1,22 +1,19 @@
 class ShipsController < ApplicationController
   include ApplicationHelper, ShipsHelper
-  before_action :set_user, only: [:new, :create, :show, :destroy, :edit]
-  before_action :set_fleet, only: [:show, :index]
-  before_action :set_ship, only: [:show]
+  before_action :set_user, only: [:new, :create, :show, :destroy, :update]
+  before_action :set_fleet, only: [:show, :index, :update]
+  before_action :set_ship, only: [:show, :update]
   def index
     @ships = Ship.all
   end
 
   def show
-    binding.pry
   end
 
-  def edit
-    fleet = find_fleet
-    ship = find_ship
+  def update
     if edit_permission_check
-      fleet.ships << ship
-      redirect_to fleet_path(fleet)
+      @fleet.ships << @ship
+      redirect_to fleet_path(@fleet)
     else
       redirect_to user_path(@user)
     end
@@ -42,11 +39,9 @@ class ShipsController < ApplicationController
   end
 
   def destroy
-    fleet = find_fleet
-    ship = find_ship
     if edit_permission_check
-      fleet.ships.delete(ship)
-      redirect_to fleet_path(fleet)
+      @fleet.ships.delete(@ship)
+      redirect_to fleet_path(@fleet)
     else
       redirect_to user_path(@user)
     end
@@ -59,7 +54,7 @@ class ShipsController < ApplicationController
   end
 
   def edit_permission_check
-    find_fleet && find_ship && @user.fleets.include?(find_fleet)
+    @fleet && @ship && @user.fleets.include?(@fleet)
   end
 
 

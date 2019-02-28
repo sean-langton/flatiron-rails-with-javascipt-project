@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   post 'leagues/new', to:"leagues#create"
   resources :fleets, only: [:show, :new, :create, :destroy, :edit, :update] do
-    resources :ships, only: [:show, :index, :new, :edit, :destroy]
+    resources :ships, only: [:show, :index, :new, :update, :destroy]
     post 'fleets/new', to:"fleets#create"
   end
 

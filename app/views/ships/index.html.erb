@@ -17,7 +17,7 @@
     <% if @fleet %>
     <td>
       <% if s.available(@fleet) %>
-        <%= link_to "Add Ship To Fleet", edit_fleet_ship_path(@fleet, s) %>
+        <%= link_to "Add Ship To Fleet", fleet_ship_path(@fleet, s), method: "patch" %>
       <% else %>
         Unavailible
       <% end %>
