@@ -4,6 +4,7 @@ class FleetsController < ApplicationController
 
   def show
     @fleet = Fleet.find(params[:id])
+    @ships = @fleet.ships
   end
 
   def new

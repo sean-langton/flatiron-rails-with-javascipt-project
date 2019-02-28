@@ -3,6 +3,7 @@ class ShipsController < ApplicationController
   before_action :set_user, only: [:new, :create, :show, :destroy]
 
   def index
+    @ships = Ship.all
   end
 
   def show
