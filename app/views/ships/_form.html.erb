@@ -10,8 +10,8 @@
 <%= form_for @ship do |f| %>
 <%= f.label "Ship name:" %><br>
 <%= f.text_field :name %><br>
-<%= f.label "Type" %><br>
-<%= f.select :type, options_for_select(Ship.types) %><br>
+<%= f.label "Size" %><br>
+<%= f.select :size, options_for_select(Ship.sizes) %><br>
 <%= f.label "Max Cargo (DWT)" %><br>
 <%= f.number_field :max_cargo %><br>
 <%= f.label "Max Distance (In Miles)" %><br>

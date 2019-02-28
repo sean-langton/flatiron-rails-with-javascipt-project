@@ -6,10 +6,10 @@
     <th> Ship Type</th>
     <th> Ship Name </th>
   </tr>
-  <% Ship.types.each do |t| %>
-  <% ship = @ships.find_by(type: t) if @ships %>
+  <% Ship.sizes.each do |s| %>
+  <% ship = @ships.find_by(size: s) if @ships %>
   <tr>
-    <td> <%= t %> </td>
+    <td> <%= s %> </td>
     <td> <%= link_to ship.name , fleet_ship_path(ship) if ship %> </td>
   </tr>
   <% end %>

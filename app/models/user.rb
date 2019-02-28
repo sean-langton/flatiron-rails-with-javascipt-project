@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true, presence: true
 
   has_many :fleets
+  has_many :ships, through: :fleets
 end

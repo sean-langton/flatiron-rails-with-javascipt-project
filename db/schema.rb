@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_010642) do
 
   create_table "ships", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "size"
     t.integer "max_cargo"
     t.integer "max_distance"
     t.datetime "created_at", null: false
