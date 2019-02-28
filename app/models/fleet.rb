@@ -6,7 +6,8 @@ class Fleet < ApplicationRecord
 
   validates :name, presence: true
   validates :league_id, :user_id, numericality: true
-  
+  validates_with LeagueValidator
+
   def league_ships
     self.league.ships
   end

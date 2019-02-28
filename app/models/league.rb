@@ -6,4 +6,8 @@ class League < ApplicationRecord
   has_many :fleets
   has_many :ships, through: :fleets
   has_many :users, through: :fleets
+
+  def full?
+    self.fleets.count >= self.num_of_fleets
+  end
 end

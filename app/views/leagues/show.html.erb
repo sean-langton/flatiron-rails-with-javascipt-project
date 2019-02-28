@@ -5,4 +5,4 @@
 <%= link_to 'Delete League', league_path, method: "delete" %>
 <br>
 <% end %>
-<%= link_to 'Add Team', new_league_fleet_path(@league) %>
+<%= link_to 'Add Team', new_league_fleet_path(@league) if !@league.full?%>
