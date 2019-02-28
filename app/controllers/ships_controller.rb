@@ -1,6 +1,6 @@
 class ShipsController < ApplicationController
   include ApplicationHelper
-  before_action :set_user, only: [:new, :create, :show, :destroy]
+  before_action :set_user, only: [:new, :create, :show, :destroy, :edit]
 
   def index
     if params[:fleet_id] && Fleet.exists?(params[:fleet_id])
@@ -13,6 +13,15 @@ class ShipsController < ApplicationController
   end
 
   def edit
+    fleet = Fleet.find_by(id: params[:fleet_id])
+    ship = Ship.find_by(id: params[:id])
+    binding.pry
+    if fleet && ship && @user.fleets.include?(fleet)
+      fleet.ships << ship
+      redirect_to fleet_path(fleet)
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def update
