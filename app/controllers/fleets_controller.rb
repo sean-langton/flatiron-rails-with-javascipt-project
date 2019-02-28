@@ -2,10 +2,6 @@ class FleetsController < ApplicationController
   include ApplicationHelper
   before_action :set_user, only: [:new, :create, :show, :destroy]
 
-  def index
-    @fleets = Fleet.all
-  end
-
   def show
     @fleet = Fleet.find(params[:id])
   end
@@ -21,7 +17,6 @@ class FleetsController < ApplicationController
   def create
     @fleet = Fleet.new(fleet_params)
     @user.fleets << @fleet
-    binding.pry
       if @fleet.save
         flash[:notice] = "Fleet Created"
         redirect_to fleet_path(@fleet)
@@ -34,12 +29,18 @@ class FleetsController < ApplicationController
   end
 
   def edit
+    @fleet = Fleet.find(params[:id])
+  end
+
+  def update
+    @fleet = Fleet.find(params[:id])
+    @fleet.update(fleet_params)
+    redirect_to fleet_path(@fleet)
   end
 
   private
 
   def fleet_params
-    binding.pry
     params.require(:fleet).permit(:name, :league_id)
   end
 end
