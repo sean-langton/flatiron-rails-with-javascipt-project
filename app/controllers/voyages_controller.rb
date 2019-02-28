@@ -19,6 +19,10 @@ class VoyagesController < ApplicationController
       end
   end
 
+  def most_recent
+    @voyages = Voyage.most_recent
+  end
+
   private
 
   def voyage_params

@@ -4,6 +4,6 @@ class Voyage < ApplicationRecord
 
   validates :dep_port, :arr_port, presence: true
 #  validates_with CapacityValidator
-  scope :most_recent, -> { order("voyages.created_at DESC") }
+  scope :most_recent, -> { order("voyages.created_at DESC").limit(5) }
 
 end

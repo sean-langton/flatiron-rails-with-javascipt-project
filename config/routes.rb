@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :ships, only: [:show, :new, :create, :index]
-
+  get 'voyages/most_recent', to:'voyages#most_recent'
   resources :voyages, only: [:new, :create]
-  
+
 end
