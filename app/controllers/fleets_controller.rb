@@ -11,6 +11,7 @@ class FleetsController < ApplicationController
   def new
     if !params[:league_id] || !League.exists?(params[:league_id])
       redirect_to leagues_path
+      flash[:notice] = "Fleets must belong to a league. Please Try Again."
     else
       @fleet = Fleet.new(league_id: params[:league_id])
     end

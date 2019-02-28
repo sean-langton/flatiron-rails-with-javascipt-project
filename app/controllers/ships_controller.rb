@@ -20,13 +20,14 @@ class ShipsController < ApplicationController
       @fleet.ships << @ship
       redirect_to fleet_path(@fleet)
     else
+      flash[:notice] = "Error updating ship. Please try again"
       redirect_to user_path(@user)
     end
   end
 
   def new
     if params[:fleet_id] && Fleet.exists?(params[:fleet_id])
-      @fleet =Fleet.find(params[:fleet_id])
+      @fleet = Fleet.find(params[:fleet_id])
       @ship = Ship.new(fleet_id: params[:fleet_id])
     else
       @ship = Ship.new
@@ -48,6 +49,7 @@ class ShipsController < ApplicationController
       @fleet.ships.delete(@ship)
       redirect_to fleet_path(@fleet)
     else
+      flash[:notice] = "Ships can only be removed by it's Fleet's Captain."
       redirect_to user_path(@user)
     end
   end

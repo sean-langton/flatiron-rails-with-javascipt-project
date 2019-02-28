@@ -38,7 +38,7 @@
       </div>
     </header>
     <div class="content">
-      <%= flash[:notice] = "Fleet Created" %>
+      <%= flash[:notice] if flash[:notice] %>
       <%= yield %>
     </div>
   </body>
