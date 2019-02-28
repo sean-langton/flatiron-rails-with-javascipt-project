@@ -5,12 +5,14 @@
   </tr>
     <th> Ship Type</th>
     <th> Ship Name </th>
+    <th> Release Ship </th>
   </tr>
   <% Ship.sizes.each do |s| %>
   <% ship = @ships.find_by(size: s) if @ships %>
   <tr>
     <td> <%= s %> </td>
     <td> <%= link_to ship.name , fleet_ship_path(ship) if ship %> </td>
+    <td> <%= link_to "Release" , fleet_ship_path(ship), method:"delete" if ship %> </td>
   </tr>
   <% end %>
 </table>

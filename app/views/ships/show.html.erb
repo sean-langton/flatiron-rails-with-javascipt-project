@@ -1,2 +1,7 @@
-<h1>Ships#show</h1>
-<p>Find me in app/views/ships/show.html.erb</p>
+<h1> <%= @ship.name %> </h1>
+<h3> <%= @fleet.name %> </h3>
+<ul>
+  <li> Size: <%=@ship.size %> </li>
+  <li> Maximum Cargo: <%=@ship.max_cargo %> </li>
+  <li> Maximum Distance: <%=@ship.max_distance %> </li>
+</ul>

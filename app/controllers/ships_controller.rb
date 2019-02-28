@@ -1,30 +1,25 @@
 class ShipsController < ApplicationController
-  include ApplicationHelper
+  include ApplicationHelper, ShipsHelper
   before_action :set_user, only: [:new, :create, :show, :destroy, :edit]
-
+  before_action :set_fleet, only: [:show, :index]
+  before_action :set_ship, only: [:show]
   def index
-    if params[:fleet_id] && Fleet.exists?(params[:fleet_id])
-    @fleet = Fleet.find(params[:fleet_id])
-    end
     @ships = Ship.all
   end
 
   def show
+    binding.pry
   end
 
   def edit
-    fleet = Fleet.find_by(id: params[:fleet_id])
-    ship = Ship.find_by(id: params[:id])
-    binding.pry
-    if fleet && ship && @user.fleets.include?(fleet)
+    fleet = find_fleet
+    ship = find_ship
+    if edit_permission_check
       fleet.ships << ship
       redirect_to fleet_path(fleet)
     else
       redirect_to user_path(@user)
     end
-  end
-
-  def update
   end
 
   def new
@@ -46,9 +41,26 @@ class ShipsController < ApplicationController
       end
   end
 
+  def destroy
+    fleet = find_fleet
+    ship = find_ship
+    if edit_permission_check
+      fleet.ships.delete(ship)
+      redirect_to fleet_path(fleet)
+    else
+      redirect_to user_path(@user)
+    end
+  end
+
   private
 
   def ship_params
     params.require(:ship).permit(:name, :size, :max_cargo, :max_distance)
   end
+
+  def edit_permission_check
+    find_fleet && find_ship && @user.fleets.include?(find_fleet)
+  end
+
+
 end
