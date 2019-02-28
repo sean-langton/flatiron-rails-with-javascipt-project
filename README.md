@@ -1,24 +1,29 @@
 # README
-THIS IS A TEST
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fantasy Fleets is parody of Fantasy Football where instead of teams and players there's fleets and boats.
 
-Things you may want to cover:
+# Installation
 
-* Ruby version
+First, install the gems required by the application
 
-* System dependencies
+  bundle install
 
-* Configuration
+Then, execute the database migrations/schema setup:
 
-* Database creation
+  rake db:setup
 
-* Database initialization
+To being the app, launch the server:
 
-* How to run the test suite
+  rails s
 
-* Services (job queues, cache servers, search engines, etc.)
+You will be able to reach the app at [http://localhost:3000](http://localhost:3000)
 
-* Deployment instructions
+#Usage
 
-* ...
+  All Fleets must belong to a league. Leagues are where 1-12 fleets compete to score the most most.
+  Fleets consist of up to 6 different ships, 1 per class of boat.
+  Ships can only be added to one fleet in league.
+  Points are scored via voyages, where distance * cargo / 1000 = points.
+
+## License
+
+This software is available as open source under the terms of the MIT License.
