@@ -20,5 +20,7 @@ Max Cargo for this ship is <%= @ship.max_cargo %><br>
 <%= f.label "Distance" %><br>
 <%= f.number_field :distance %><br>
 Max Distance for this ship is <%= @ship.max_distance %><br>
+<%= f.hidden_field :ship_id %>
+<%= f.hidden_field :fleet_id %>
 <%= f.submit %>
 <% end %>
