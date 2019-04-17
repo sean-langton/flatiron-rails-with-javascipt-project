@@ -12,7 +12,17 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+
+$(document).ready(function() {
+    attachListeners();
+});
+
+function attachListeners() {
+//  $("input[value='commit']").on('click', () => showShip(ship));
+    $("input[value='Create Ship']").on('click', function () {
+      $("#newship").text("It's Working!");
+    });
+}
