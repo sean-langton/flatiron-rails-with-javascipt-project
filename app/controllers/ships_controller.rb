@@ -36,12 +36,7 @@ class ShipsController < ApplicationController
 
   def create
     @ship = Ship.new(ship_params)
-      if @ship.save
-        flash[:notice] = "Ship Created"
-        redirect_to ship_path(@ship)
-      else
-        render :new
-      end
+      render json: @ship, status: 201 if @ship.save
   end
 
   def destroy
