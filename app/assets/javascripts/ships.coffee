@@ -6,9 +6,8 @@ $ ->
     newShip = $.post('/ships', values)
     newShip.done (data) ->
       ship = data
-      $('#shipName').text ship['name']
+      $('#shipName').text data
       return
-    alert 'we r hack3rz'
     return
     return
   return

@@ -35,8 +35,12 @@ class ShipsController < ApplicationController
   end
 
   def create
-    @ship = Ship.create(ship_params)
-    render json: @ship, status: 201
+    @ship = Ship.new(ship_params)
+    if @ship.save
+      render json: @ship, status: 201
+    else
+      render json: @ship.errors.full_messages
+    end
   end
 
   def destroy
